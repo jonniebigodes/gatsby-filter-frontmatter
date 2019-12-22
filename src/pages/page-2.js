@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-class BlogIndex extends React.Component {
+class Page2 extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
@@ -43,13 +43,13 @@ class BlogIndex extends React.Component {
             </article>
           )
         })}
-        <Link to="/page-2/">View Archived Items</Link>
+         <Link to="/">View Active Items</Link>
       </Layout>
     )
   }
 }
 
-export default BlogIndex
+export default Page2
 
 export const pageQuery = graphql`
   query {
@@ -58,7 +58,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(filter: { frontmatter: { status: { eq: "active" } } }) {
+    allMarkdownRemark(filter: { frontmatter: { status: { eq: "archive" } } }) {
       edges {
         node {
           excerpt
